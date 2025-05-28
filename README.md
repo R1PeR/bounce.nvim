@@ -2,8 +2,8 @@
 
 Simple plugin that displays possible word jumps forward and backward from cursor position as marks with number assigned.
 
-![Alt text](img/picture_1.jpg?raw=true "Forward possible jump positions")
-![Alt text](img/picture_2.jpg?raw=true "Backward possible jump positions")
+![Alt text](img/picture_1.JPG?raw=true "Forward possible jump positions")
+![Alt text](img/picture_2.JPG?raw=true "Backward possible jump positions")
 
 ## Limitations
 
