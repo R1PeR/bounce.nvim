@@ -4,7 +4,7 @@ local M = {}
 local words = {}
 local update_timer = vim.loop.new_timer()
 local namespace = vim.api.nvim_create_namespace("bounce")
-local config = { hightlight_group_name = '@text.todo', delay_time = 1000 }
+local config = { hightlight_group_name = "@text.todo", delay_time = 1000, more_jumps = false }
 
 local function find_jump_points(forward, jump_table)
   local line = vim.api.nvim_get_current_line()
@@ -17,14 +17,20 @@ local function find_jump_points(forward, jump_table)
       vim.api.nvim_command("norm! b")
     end
     local current_row, current_col = unpack(vim.api.nvim_win_get_cursor(0))
-    if current_row ~= row or word_count > 9 or current_col >= string.len(line) or string.len(line) == 0 then
+    if current_row ~= row or current_col >= string.len(line) or string.len(line) == 0 then
+      break
+    end
+    if not config.more_jumps and word_count > 9 then
+      break
+    end
+    if #jump_table > 0 and jump_table[#jump_table].pos == current_col then
       break
     end
     table.insert(jump_table, {
       line = current_row - 1,
       pos = current_col,
       char = line:sub(current_col + 1, current_col + 1),
-      count = word_count,
+      count = word_count % 10,
     })
     word_count = word_count + 1
   end
