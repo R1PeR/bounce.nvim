@@ -4,7 +4,7 @@ local M = {}
 local words = {}
 local update_timer = vim.loop.new_timer()
 local namespace = vim.api.nvim_create_namespace("bounce")
-local config = { hightlight_group_name = "@text_todo", delay_time = 1000 }
+local config = { hightlight_group_name = '@text.todo', delay_time = 1000 }
 
 local function find_jump_points(forward, jump_table)
   local line = vim.api.nvim_get_current_line()
@@ -37,10 +37,10 @@ local function update_word_buffer()
   find_jump_points(false, words)
   for i = 1, #words do
     words[i].mark = vim.api.nvim_buf_set_extmark(0, namespace, words[i].line, words[i].pos, {
-      virt_text = { { tostring(words[i].count), config.hightlight_group_name } },
+      virt_text = { { tostring(words[i].count), config.highlight_group_name } },
       virt_text_pos = "overlay",
       virt_text_hide = true,
-      -- hl_group = highlightGroup,
+      -- hl_group = config.hightlight_group_name,
       hl_mode = "replace",
     })
   end
@@ -61,6 +61,7 @@ end
 
 local function setup(user_config)
   config = vim.tbl_deep_extend("force", config, user_config or {})
+  print("bounce config:", config.highlight_group_name, config.delay_time)
   vim.api.nvim_create_autocmd({ "CursorMoved" }, { callback = show_word_numbers })
   vim.api.nvim_create_autocmd({ "ModeChanged", "CmdlineEnter" }, { callback = hide_word_numbers })
 end
