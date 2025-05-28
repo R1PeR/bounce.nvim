@@ -21,3 +21,17 @@ calling `hide_word_numbers` will hide displayed posbbile jump position instantly
 
 `delay_time` - time in ms it takes to show jump positions after action, default: `1000`
 `highlight_group_name` - highlight name to use on jump positions, default: `@text.todo`
+
+## Example installation
+
+```
+  {
+    'R1PeR/bounce.nvim',
+    config = function()
+      require('bounce').setup {
+        delay_time = 2000,
+        highlight_group_name = '@text.todo',
+      }
+    end,
+  },
+```
