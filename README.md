@@ -4,7 +4,7 @@ Simple plugin that displays possible word jumps forward and backward from cursor
 
 ![Alt text](img/picture_1.JPG?raw=true "Forward possible jump positions")
 ![Alt text](img/picture_2.JPG?raw=true "Backward possible jump positions")
-![Alt text](img/picture_2.JPG?raw=true "Virtual line jump positions")
+![Alt text](img/picture_3.JPG?raw=true "Virtual line jump positions")
 
 ## Exposed functions
 
