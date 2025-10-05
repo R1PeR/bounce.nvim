@@ -12,9 +12,9 @@ local function find_jump_points(forward, jump_table)
   local word_count = 1
   while true do
     if forward then
-      vim.api.nvim_command("norm! w")
+      vim.api.nvim_command("norm w")
     else
-      vim.api.nvim_command("norm! b")
+      vim.api.nvim_command("norm b")
     end
     local current_row, current_col = unpack(vim.api.nvim_win_get_cursor(0))
     if current_row ~= row or current_col >= string.len(line) or string.len(line) == 0 then
